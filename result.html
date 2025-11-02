@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluation Result</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; text-align: center; }
+        .card { background: white; padding: 30px; margin: 50px auto; width: 400px; box-shadow: 0 0 10px #ccc; border-radius: 10px; }
+        a { text-decoration: none; color: #4CAF50; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Evaluation Result</h2>
+    <p><b>File:</b> {{ name }}</p>
+    <p><b>Marks:</b> {{ marks }}</p>
+    <p><b>Remarks:</b> {{ remarks }}</p>
+    <p><b>Extracted Answer:</b><br>{{ extracted }}</p>
+    <a href="/analytics">View Class Analytics</a>
+</div>
+</body>
+</html>

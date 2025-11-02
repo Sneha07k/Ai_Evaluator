@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Answer Evaluator</title>
+    <style>
+        body { font-family: Arial; background: #fafafa; text-align: center; }
+        .container { margin-top: 60px; }
+        input { margin: 10px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Upload Answer Key and Student Answer</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div>
+            <label>Answer Key (Text File): </label>
+            <input type="file" name="answer_key" accept=".txt" required>
+        </div>
+        <div>
+            <label>Student Answer (Image): </label>
+            <input type="file" name="answer_image" accept=".jpg,.jpeg,.png" required>
+        </div>
+        <button type="submit">Evaluate</button>
+    </form>
+</div>
+</body>
+</html>

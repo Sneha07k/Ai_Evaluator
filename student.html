@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: #fafafa; }
+        .box { margin-top: 60px; background: white; padding: 30px; width: 400px; border-radius: 10px; box-shadow: 0 0 10px #ccc; margin-left: auto; margin-right: auto; }
+        a { color: #4CAF50; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h3>Student Details</h3>
+    <p><b>ID:</b> {{ student[0] }}</p>
+    <p><b>Name:</b> {{ student[1] }}</p>
+    <p><b>Marks:</b> {{ student[2] }}</p>
+    <p><b>Remarks:</b> {{ student[3] }}</p>
+    <a href="{{ url_for('analytics') }}">Back to Analytics</a>
+</div>
+</body>
+</html>
