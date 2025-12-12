@@ -1,0 +1,33 @@
+<!-- student_results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+  <div class="container bg-white p-4 rounded shadow">
+    <h3>Your Results</h3>
+    {% if results %}
+      {% for r in results %}
+        <h5>Report (ID: {{ loop.index }}) - {{ r.name }}</h5>
+        <table class="table">
+          <thead><tr><th>Question</th><th>Marks</th><th>Remarks</th></tr></thead>
+          <tbody>
+            {% for ans in r.answers %}
+              <tr>
+                <td>{{ ans.question }}</td>
+                <td>{{ ans.marks }}</td>
+                <td>{{ ans.remarks }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-info">No results found yet.</div>
+    {% endif %}
+    <a href="{{ url_for('student_dashboard') }}" class="btn btn-secondary">Back</a>
+  </div>
+</body>
+</html>

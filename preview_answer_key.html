@@ -1,0 +1,18 @@
+<!-- preview_answer_key.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview Answer Key - {{ filename }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
+    pre { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); white-space: pre-wrap; }
+    a { display: inline-block; margin-top: 15px; text-decoration: none; color: #007bff; }
+  </style>
+</head>
+<body>
+  <h2>Previewing: {{ filename }}</h2>
+  <pre>{{ content }}</pre>
+  <a href="{{ url_for('evaluator_dashboard') }}">← Back</a>
+</body>
+</html>

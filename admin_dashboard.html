@@ -1,0 +1,56 @@
+
+<!-- admin_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        h1 { font-weight: bold; color: #333; margin-bottom: 30px; }
+        h3 { color: #555; margin-top: 30px; margin-bottom: 15px; }
+        .btn-big {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>Admin Dashboard</h1>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+
+        <hr>
+
+        <h3>Exam Management</h3>
+        <a href="{{ url_for('create_exam') }}" class="btn btn-primary btn-big">➕ Create New Exam</a>
+        <a href="{{ url_for('assign_exam') }}" class="btn btn-warning btn-big">📌 Assign Exam to Student</a>
+        <!-- <a href="{{ url_for('list_exams') }}" class="btn btn-secondary btn-big">📄 View All Exams</a> -->
+
+        <h3 class="mt-4">Answer Keys</h3>
+        <a href="{{ url_for('upload_answer_key') }}" class="btn btn-info btn-big">⬆ Upload Answer Key</a>
+
+        <h3 class="mt-4">Analytics & Results</h3>
+        <a href="{{ url_for('analytics') }}" class="btn btn-success btn-big">📊Analytics</a>
+        <a href="{{ url_for('admin_results') }}" class="btn btn-dark btn-big">📘 View All Results</a>
+
+    </div>
+</body>
+</html>

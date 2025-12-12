@@ -1,0 +1,53 @@
+<!-- evaluator_submissions.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Submissions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light p-4">
+<div class="container bg-white p-4 rounded shadow">
+
+    <h2>Pending Submissions</h2>
+
+    {% if submissions %}
+        <table class="table table-bordered mt-3">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Exam ID</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for s in submissions %}
+                <tr>
+                    <td>{{ s.student_name }}</td>
+                    <td>{{ s.exam_id }}</td>
+                    <td>
+                        <a href="{{ url_for('serve_student_image', filename=s.filename) }}" target="_blank">
+                            View Image
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('evaluate_submission', submission_id=s.id) }}" class="btn btn-primary">
+                            Evaluate
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <div class="alert alert-info mt-3">No pending submissions.</div>
+    {% endif %}
+
+    <a href="{{ url_for('evaluator_dashboard') }}" class="btn btn-secondary mt-3">Back</a>
+
+</div>
+</body>
+</html>

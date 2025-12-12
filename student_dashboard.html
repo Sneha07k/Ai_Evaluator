@@ -1,0 +1,56 @@
+<!-- student_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+  <div class="container bg-white p-4 rounded shadow">
+    <h2>Welcome, {{ session.username }}</h2>
+
+    <h4 class="mt-3">Assigned Exams</h4>
+    {% if assigned_exams %}
+      <ul class="list-group">
+        {% for ex in assigned_exams %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ ex.exam_name }}</strong> (ID {{ ex.id }})
+            </div>
+            <div>
+              <a href="{{ url_for('serve_question_paper', filename=ex.question_file) }}" target="_blank" class="btn btn-sm btn-outline-primary">View Question Paper</a>
+              <a href="{{ url_for('student_upload_answer', exam_id=ex.id) }}" class="btn btn-sm btn-primary ms-2">Upload Answer</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="alert alert-info">No exams assigned.</div>
+    {% endif %}
+
+    <h4 class="mt-4">Your Submissions</h4>
+    <table class="table">
+      <thead><tr><th>File</th><th>Exam ID</th><th>Submitted At</th><th>Status</th></tr></thead>
+      <tbody>
+        {% for s in submissions %}
+          <tr>
+            <td><a href="{{ url_for('serve_student_image', filename=s.filename) }}" target="_blank">{{ s.filename }}</a></td>
+            <td>{{ s.exam_id }}</td>
+            <td>{{ s.submitted_at }}</td>
+            <td>{{ s.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h4 class="mt-4">Results</h4>
+    {% if results %}
+      <p>Results available. Visit <a href="{{ url_for('student_results') }}">Your Results</a>.</p>
+    {% else %}
+      <p>No results yet.</p>
+    {% endif %}
+
+    <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3">Logout</a>
+  </div>
+</body>
+</html>
